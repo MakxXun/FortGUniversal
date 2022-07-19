@@ -4,7 +4,11 @@ local Window = Library.CreateLib("FortG ObbyDude Script", "Ocean")
     -- MAIN
     local Main = Window:NewTab("General")
     local MainSection = Main:NewSection("General")
-
+	
+	MainSection:NewButton("Disable AC", "Disables AntiCheat", function()
+		game.Workspace.AntiCheat.Disabled = true
+	end)
+	
 	MainSection:NewKeybind("Toggle UI[N]", "Toggles UI", Enum.KeyCode.N, function()
 	Library:ToggleUI()
 end)
@@ -46,11 +50,11 @@ PlayerSection:NewToggle("Speed/Jump boost", "go fast and jump high", function(st
 		end)
 	end)
 
-    PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
+    PlayerSection:NewSlider("Walkspeed", "Changes speed using the ROBLOX Way.", 500, 16, function(s)
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
     end)
 
-    PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 350, 50, function(s)
+    PlayerSection:NewSlider("Jumppower", "Changes JP using the ROBLOX Way.", 350, 50, function(s)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
     end)
 
@@ -63,6 +67,9 @@ PlayerSection:NewToggle("Speed/Jump boost", "go fast and jump high", function(st
             game.Players.LocalPlayer.Character.Humanoid.Health = 0
         end)
 
+	PlayerSection:NewButton("AntiLavaKill", "Not getting killed by the lava ever again.", function()
+		game.Workspace.ObbyProjects.Lava.LavaKill.Disabled = true
+	end)
     --Other
     local Other = Window:NewTab("OtherGUI")
     local OtherSection = Other:NewSection("Other Scripts")
