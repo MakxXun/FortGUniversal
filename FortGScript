@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 if game.PlaceId == 10102013973 then
-local Window = Library.CreateLib("FortG Universal Script", "Ocean")
+local Window = Library.CreateLib("FortG ObbyDude Script", "Ocean")
     -- MAIN
     local Main = Window:NewTab("General")
     local MainSection = Main:NewSection("General")
