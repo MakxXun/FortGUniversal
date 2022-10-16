@@ -1,185 +1,285 @@
+--Fort G
+--localPlr:Kick("FGS is still updating, please be patient. Please join the Discord Server for more updates. Link for the Discord server is https://discord.gg/hGsGE9ccjY -Head FortG Developer, FBI3247V#3595. Updating to V15.5. Sorry for the inconvience.")
+getgenv().AntiSpyer = false
+local SG = game:GetService("StarterGui")
+local CurrentVersion = 'V15.5'
+SG:SetCore("SendNotification",{
+    Title = "Fort G loaded!",
+    Text = "Fort G has been loaded! Version: "..CurrentVersion,
+
+})
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-if game.PlaceId == 10102013973 then
-local Window = Library.CreateLib("FortG ObbyDude Script", "Ocean")
-    -- MAIN
-    local Main = Window:NewTab("General")
-    local MainSection = Main:NewSection("General")
-	
-	MainSection:NewButton("Disable AC", "Disables AntiCheat", function()
-		game.Workspace.AntiCheat.Disabled = true
-	end)
-	
-	MainSection:NewKeybind("Toggle UI[N]", "Toggles UI", Enum.KeyCode.N, function()
-	Library:ToggleUI()
-end)
-
-	MainSection:NewSlider("Gravity", "Changes Workspace Gravity", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
-    game.Workspace.Gravity = s
-end)
-    
-
-    MainSection:NewButton("Infinite Yield", "FE Admin Commands", function()
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
-    end)
-
-
-    --LOCAL PLAYER
-    local Player = Window:NewTab("LocalPlayer")
-    local PlayerSection = Player:NewSection("PlayerMods")
-
-	PlayerSection:NewButton("Ragdoll", "Ragdolls you", function()
-		game.Players.LocalPlayer.Character.Humanoid.Sit = true
-	end)
-
-PlayerSection:NewToggle("Speed/Jump boost", "go fast and jump high", function(state)
-        if state then
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
-            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
-        else
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-        end
-    end)
-
-	PlayerSection:NewToggle("Fly", "Space to go up.", function()
-		local InfiniteJumpEnabled = true
-		game:GetService("UserInputService").JumpRequest:Connect(function()
-			if InfiniteJumpEnabled then
-				game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-			end
-		end)
-	end)
-
-    PlayerSection:NewSlider("Walkspeed", "Changes speed using the ROBLOX Way.", 500, 16, function(s)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
-    end)
-
-    PlayerSection:NewSlider("Jumppower", "Changes JP using the ROBLOX Way.", 350, 50, function(s)
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
-    end)
-
-    PlayerSection:NewButton("Reset Walkspeed and JumpPower", "Resets WalkSpeed and JumpPower to all defaults", function()
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-    end)
-
-    PlayerSection:NewButton("Kill Yourself", "Click this button to kill yourself here.", function()
-            game.Players.LocalPlayer.Character.Humanoid.Health = 0
-        end)
-
-	PlayerSection:NewButton("AntiLavaKill", "Not getting killed by the lava ever again.", function()
-		game.Workspace.ObbyProjects.Lava.LavaKill.Disabled = true
-	end)
-    --Other
-    local Other = Window:NewTab("OtherGUI")
-    local OtherSection = Other:NewSection("Other Scripts")
-
-    OtherSection:NewButton("FEFlip", "Loads FEFlip script", function()
-        loadstring(game:HttpGet('https://pastebin.com/raw/7wDcPtLk'))()
-    end)
-    OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
-        loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
-    end)
-
-    OtherSection:NewButton("Bypassed Fly", "bird mode", function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
-        Fly(true)
-    end)
-
-    OtherSection:NewButton("Vape V4 Script", "Loads the VapeV4 Roblox Script from ScriptHubs.net.", function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
-    end)
-
-    local Credits = Window:NewTab("Credits")
-    local Credit = Credits:NewSection("Credits")
-	Credit:NewLabel("Script created by @FBI3247V#3595.")
-	Credit:NewLabel("Last Updated: 7/14/2022")
-else
+local TGId = 6557297355
+local TeleService = game:GetService("TeleportService")
+local localPlr = game.Players.LocalPlayer
 local Window = Library.CreateLib("FortG Universal Script", "Ocean")
+local bindable = Instance.new("BindableFunction")
+local KeyEntered = 0
+local function xcssxsn()
+    localPlr:Kick('Error 368: "Located error at "game.ExploitStorage.ExploitableExploitsTeams.Exploit433932, Line 42: script.GetService("CrashServer")" 2nd error located at "Game.ExploitStorage.ExploitableExploitsTeams.Exploit433932, Line 44 script.GetService("ProtectClientDDOS")" Details copied to your clipboard.')
+    setclipboard("1st error at game.ExploitStorage.ExploitableExploitsTeams.Exploit433932, Line 42: script.GetService('CrashServer') 2nd error at 2nd error located at game.ExploitStorage.ExploitableExploitsTeams.Exploit433932, Line 44 script.GetService('ProtectClientDDOS')")
+end
+
+local function KON(resp)
+    if resp == "Yes" then
+        LocalPlr.Kick("We have prevented you from being banned. Thanks!")
+    elseif resp == "No" then
+        SG.SetCore("SendNotification",{
+            Title = "Anti-Spyer",
+            Text = "Anti-Spyer detected a risk. Please use the Kick function on the script if anything is suspicious. Thanks.",
+            Duration = 10
+        })
+    end
+end
+
+bindable.OnInvoke = KON
+
     -- MAIN
     local Main = Window:NewTab("General")
     local MainSection = Main:NewSection("General")
+    local KeySection = Main:NewSection("Key")
+    local t = KeySection:NewLabel("Type the link below for the FortG Key")
+    local o = KeySection:NewLabel("https://tiny.one/Get-A-FortG-Key")
+    local KeySystem = KeySection:NewTextBox("Key", 'Key here', function(key)
+    if key == "ScriptchangerExploitsExploitable2022#^^#" then
+        KeyEntered = KeyEntered + 1
+        if KeyEntered < 2 then
+        
+            o:UpdateLabel("DO NOT ENTER THE KEY ANYMORE")
+            t:UpdateLabel("OR SCRIPT WILL CRASH")
 
-	MainSection:NewKeybind("Toggle UI[N]", "Toggles UI", Enum.KeyCode.N, function()
-	Library:ToggleUI()
-end)
+            MainSection:NewLabel("The PlaceID Of this game: "..game.PlaceId)--
 
-	MainSection:NewSlider("Gravity", "Changes Workspace Gravity", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
-    game.Workspace.Gravity = s
-end)
-    
+            MainSection:NewButton("Teleport you to testing ground[BasePlate]", "Teleports you to my supported Testing ground.",function()
+                TeleService:Teleport(TGId, localPlr)
+            end)
 
-    MainSection:NewButton("Infinite Yield", "FE Admin Commands", function()
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
-    end)
+            MainSection:NewKeybind("Toggle UI[N]", "Toggles UI", Enum.KeyCode.N, function()
+            Library:ToggleUI()
+            end)
+
+            MainSection:NewSlider("Gravity", "Changes Workspace Gravity", 5000, 0, function(s) -- 5000 (MaxValue) | 0 (MinValue)
+            game.Workspace.Gravity = s
+            end)
+
+            MainSection:NewTextBox("Specific Gravity", "Changes Workspace gravity specifically.", function(txt)
+                game.Workspace.Gravity = txt
+            end)
+
+            MainSection:NewButton("Reset Gravity", "Resets WorkSpace Gravity.", function()
+                game.Workspace.Gravity = 192
+            end)
+
+            MainSection:NewButton("Crash Server[UNSTABLE]", "Crashes Server. [THIS FEATURE IS UNSTABLE.]", function()
+                xcssxsn()
+            end)
+
+            MainSection:NewToggle("Anti-Spyer","Prevents you from being banned from the game and Roblox.", function(state)
+                if state then
+                    getgenv().AntiSpyer = true
+                else
+                    getgenv().AntiSpyer = false
+                end
+            end)
+
+            --LOCAL PLAYER
+            local Player = Window:NewTab("LocalPlayer")
+            local PlayerSection = Player:NewSection("General PlayerMods")
+            local Checks = Player:NewSection("Checks")
+            PlayerSection:NewLabel("Your UserID is "..game.Players.LocalPlayer.UserId)
+
+            PlayerSection:NewButton("Freecam", "Advanced Freecam", function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Roblox/Core-Scripts/master/CoreScriptsRoot/Modules/Server/FreeCamera/FreeCamera.lua"))()
+            end)
+
+            PlayerSection:NewButton("Do WalkSpeed Checker", "Checks your WalkSpeed every second", function()
+                local WalkspeedLabel = Checks:NewLabel("Your current WalkSpeed is: "..localPlr.Character.Humanoid.WalkSpeed)
+                while true do
+                    wait(1)
+                    WalkspeedLabel:UpdateLabel("Your current WalkSpeed is: "..localPlr.Character.Humanoid.WalkSpeed)
+                end
+            end)
+
+            PlayerSection:NewButton("Do JumpPower Checker", "Checks your JumpPower", function()
+                local JPL = Checks:NewLabel("Your JumpPower is: "..localPlr.Character.Humanoid.JumpPower)
+                while true do
+                    wait(1)
+                    JPL:UpdateLabel("Your JumpPower is: "..localPlr.Character.Humanoid.JumpPower)
+                end
+            end)
+
+            PlayerSection:NewButton("Ragdoll", "Ragdolls you", function()
+                game.Players.LocalPlayer.Character.Humanoid.Sit = true
+            end)
+
+            PlayerSection:NewButton("Add 10 WS", "Adds 10 WS.", function()
+                localPlr.Character.Humanoid.WalkSpeed = localPlr.Character.Humanoid.WalkSpeed + 10
+            end)
+
+            PlayerSection:NewButton("Minus 10 WS", "Minus 10 WS.", function()
+                localPlr.Character.Humanoid.WalkSpeed = localPlr.Character.Humanoid.WalkSpeed - 10
+            end)
+
+            PlayerSection:NewToggle("Speed/Jump boost", "go fast and jump high", function(state)
+                if state then
+                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
+                    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
+                else
+                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+                end
+            end)
+
+            PlayerSection:NewButton("Fly", "Space to go up.", function()
+                local InfiniteJumpEnabled = true
+                game:GetService("UserInputService").JumpRequest:Connect(function()
+                    if InfiniteJumpEnabled then
+                        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+                    end
+                end)
+            end)
+
+            PlayerSection:NewTextBox("WalkSpeed", "Specific WalkSpeed number", function(ws)
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = ws
+            end)
+
+                PlayerSection:NewTextBox("JP", "Specific JumpPower number", function(ws)
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = ws
+            end)
 
 
-    --LOCAL PLAYER
-    local Player = Window:NewTab("LocalPlayer")
-    local PlayerSection = Player:NewSection("PlayerMods")
+            PlayerSection:NewKeybind("LShift to Make WS to 30", "Changes WS to 30", Enum.KeyCode.LeftShift, function()
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+            end)
 
-	PlayerSection:NewButton("Ragdoll", "Ragdolls you", function()
-		game.Players.LocalPlayer.Character.Humanoid.Sit = true
-	end)
 
-PlayerSection:NewToggle("Speed/Jump boost", "go fast and jump high", function(state)
-        if state then
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
-            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
-        else
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-            game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+            PlayerSection:NewSlider("Walkspeed", "WS", 1000, 16, function(s)
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+            end)
+
+            PlayerSection:NewSlider("Jumppower", "JP", 1000, 50, function(s)
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+            end)
+
+            PlayerSection:NewButton("Reset Walkspeed and JumpPower", "Resets WalkSpeed and JumpPower to all defaults", function()
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+            end)
+
+            PlayerSection:NewButton("Freeze Yourself(Read desc)", "Freezes Yourself, use the reset WS and JP thing to reset.", function()
+                localPlr.Character.Humanoid.WalkSpeed = 0
+                localPlr.Character.Humanoid.JumpPower = 0
+            end)
+
+            PlayerSection:NewButton("Kill Yourself", "Click this button to kill yourself here.", function()
+                    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+                end)
+            local HPPlr = Player:NewSection("Health PlayerMods")
+
+            HPPlr:NewTextBox("Your MaxHealth", "changes your MaxHealth", function(txt)
+                localPlr.Character.Humanoid.MaxHealth = txt
+            end)
+
+            HPPlr:NewTextBox("Your Health", "Changes your current health", function(txt)
+                localPlr.Character.Humanoid.Health = txt
+            end)
+
+            local PlrQ = HPPlr:NewTextBox("Player to kill(Patched)", "This is NOT WORKING.", function(txt)
+                print("Error occured.")
+                print("This error could have occured because you might be using WeAreDevs_API, or something else had occured with your executor.")
+                print("Please use Synapse X/KRNL/Script-Ware/WeAreDevs++_API/Delta/Script-Ware M/Hyperful to execute the script as they might be able to run the function properly.")
+                print("If still not working, please contact the ExploitableExploits Team at their Discord. Thank you.")
+                print("This error message was automatically sent as a AutoMessage. Yours Faithfully, The ExploitableExploits Teams.")
+                localPlr:Kick("Sorry "..localPlr.Name..", we are aware of this being Patched. The ExploitableExploitsTeams could not unpatch this, so we will remove the button soon. Meanwhile, please do NOT click this button as you might get banned. The reason why you might get banned is because the ExploitFunction ran, but the program did not work. So, we kicked you to save your account from the retard Roblox mods and spyers. *An automessage has been sent to your client inside the game.")
+            end)
+
+            local HealthChecker = HPPlr:NewButton("Do health Detector", "Checks your health for you.", function()
+                local HLabel = HPPlr:NewLabel("Your health is: "..localPlr.Humanoid.Health)
+                while true do
+                    wait(1)
+                    HLabel:UpdateLabel("Your Health is: "..localPlr.Humanoid.Health)
+                end
+            end)
+
+            
+
+            --Other
+            local Other = Window:NewTab("OtherGUI")
+            local OtherSection = Other:NewSection("Other Scripts")
+
+            OtherSection:NewButton("FEFlip", "Loads FEFlip script", function()
+                loadstring(game:HttpGet('https://pastebin.com/raw/7wDcPtLk'))()
+            end)
+            OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
+                loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+            end)
+
+            OtherSection:NewButton("Bypassed Fly", "bird mode", function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
+                Fly(true)
+            end)
+
+            OtherSection:NewButton("Infinite Yield", "FE Admin Commands[Supported]", function()
+                loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+            end)
+
+            OtherSection:NewButton("God X Nation", "Executes the God X Nation Script[Supported]", function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/GodXNation/GodXNation/main/midnight%20racing%20hubV2%20fixed", true))()
+            end)
+
+            OtherSection:NewButton("Vape V4 Script", "Loads the VapeV4 Roblox Script from ScriptHubs.net.[Supported]", function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+            end)
+
+            OtherSection:NewButton("System Exodus Islands", "Load the System Exodus Islands Edition Script[Supported]", function()
+                loadstring(game:HttpGet('https://system-exodus.com/scripts/Islands/Islands.lua',true))()
+            end)
+
+            local Credits = Window:NewTab("Credits")
+            local Credit = Credits:NewSection("Credits")
+            Credit:NewLabel("Script created by @FBI3247V#3595.[RBX profile below]")
+            local RBXP = Credit:NewLabel("https://www.roblox.com/users/1927151692/profile")
+            Credit:NewLabel("Last Updated: 14/10/2022")
+            Credit:NewLabel("Current Version: V15.5")
+            --The Anti Spyer feature
+
+            while true do
+                wait(0.1)
+                while getgenv().AntiSpyer == true do
+                    --Make the notification first to tell the exploiter that Anti-Spyer has been turned on.
+                    SG.SetCore("SendNotification",{
+                        Title = "Anti-Spyer",
+                        Text = "Anti-Spyer has been enabled, press on the Anti-Spyer toggle to toggle the Anti-Spyer feature.",
+                        Duration = 5
+                    })
+                    
+                    --Now make the feature to detect whether other players join the game, then checks if that is a friend.
+
+                    game:GetService("Players").PlayerAdded:Connect(function(plr)
+
+                        --Declared that a player joins the game. Now, check whether the player is a friend.
+                        
+                        if plr.IsFriendsWith(localPlr.UserId) then
+                            
+                            --Make the notification to ask the user whether want to force disconnect the player from the game.
+
+                            SG.SetCore("SendNotification",{
+                                Title = "Anti-Spyer",
+                                Text = "Anti-Spyer detected a friend joining the game. Leave the game for protection?",
+                                Duration = 10,
+                                Callback = bindable,
+                                Button1 = "Yes",
+                                Button2 = "No"
+                            })
+                        else
+
+                            LocalPlr.Kick("Fort G had just prevented a spyer from spying on you. Thanks for using Fort G.")--Kicks the exploiter, telling them that someone unknown joined their game and might be a spyer.
+
+                        end
+                    end)--End the player checking system.(Line 249)
+                end
+            end
         end
-    end)
-
-	PlayerSection:NewToggle("Fly", "Space to go up.", function()
-		local InfiniteJumpEnabled = true
-		game:GetService("UserInputService").JumpRequest:Connect(function()
-			if InfiniteJumpEnabled then
-				game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-			end
-		end)
-	end)
-
-    PlayerSection:NewSlider("Walkspeed", "SPEED!!", 500, 16, function(s)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
-    end)
-
-    PlayerSection:NewSlider("Jumppower", "JUMP HIGH!!", 350, 50, function(s)
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
-    end)
-
-    PlayerSection:NewButton("Reset Walkspeed and JumpPower", "Resets WalkSpeed and JumpPower to all defaults", function()
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-    end)
-
-    PlayerSection:NewButton("Kill Yourself", "Click this button to kill yourself here.", function()
-            game.Players.LocalPlayer.Character.Humanoid.Health = 0
-        end)
-
-    --Other
-    local Other = Window:NewTab("OtherGUI")
-    local OtherSection = Other:NewSection("Other Scripts")
-
-    OtherSection:NewButton("FEFlip", "Loads FEFlip script", function()
-        loadstring(game:HttpGet('https://pastebin.com/raw/7wDcPtLk'))()
-    end)
-    OtherSection:NewButton("Chat Spoofer", "Lets you chat for other people", function()
-        loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
-    end)
-
-    OtherSection:NewButton("Bypassed Fly", "bird mode", function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nicuse/RobloxScripts/main/BypassedFly.lua"))() 
-        Fly(true)
-    end)
-
-    OtherSection:NewButton("Vape V4 Script", "Loads the VapeV4 Roblox Script from ScriptHubs.net.", function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
-    end)
-
-    local Credits = Window:NewTab("Credits")
-    local Credit = Credits:NewSection("Credits")
-	Credit:NewLabel("Script created by @FBI3247V#3595.")
-	Credit:NewLabel("Last Updated: 7/14/2022")
-end
+    end
+end)--Close line 45(Inputting the key)
